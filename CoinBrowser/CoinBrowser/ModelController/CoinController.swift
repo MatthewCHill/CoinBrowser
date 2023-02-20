@@ -10,7 +10,7 @@ import Foundation
 class CoinController {
     
     // MARK: - Properties
-    //var coins: [Coin] = [String : String]
+    static var coins: [Coin] = []
     
     // MARK: - Functions
     
@@ -34,10 +34,15 @@ class CoinController {
             guard let data = data else {return}
             do {
                 if let topLevel = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
-                    as? [String : Any] {
-                    let coin = Coin(array: topLevel)
-                    completion(true)
+                    as? [[String : Any]] {
+                    for coinDictionary in topLevel {
+                        guard  let coin = Coin(dictionaries: coinDictionary) else {return}
+                        coins.append(coin)
+                        
+                    }
                 }
+                completion(true)
+                
             } catch {
                 print(error.localizedDescription)
                 completion(false)
@@ -45,3 +50,5 @@ class CoinController {
         } .resume()
     }
 }
+
+

@@ -10,7 +10,7 @@ import Foundation
 struct Constants {
     
     struct CryptoCoins {
-        static let baseURL = "https://pro-api.coingecko.com/api/v3/"
+        static let baseURL = "https://api.coingecko.com/api/v3/"
         static let coinPath = "coins/"
     }
 }

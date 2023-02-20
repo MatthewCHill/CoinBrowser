@@ -19,10 +19,10 @@ class Coin {
         case name
     }
     
-    init?(array: [String : Any]){
-        guard let id = array[Keys.id.rawValue] as? String,
-              let symbol = array[Keys.symbol.rawValue] as? String,
-              let name = array[Keys.name.rawValue] as? String else {return nil}
+    init?(dictionaries: [String : Any]){
+        guard let id = dictionaries[Keys.id.rawValue] as? String,
+              let symbol = dictionaries[Keys.symbol.rawValue] as? String,
+              let name = dictionaries[Keys.name.rawValue] as? String  else {return nil}
         
         self.id = id
         self.symbol = symbol
